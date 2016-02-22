@@ -150,4 +150,6 @@ $controller = new Front($registry);
 
 // Cron Controller
 $cron = new Cron($registry);
-$ok = $cron->call("module/ocstore_badges/cron", array ("minute" => "*", "hour" => "*", "day" => "*", "dayofweek" => "*", "dayofmonth" => "*"));
+$cron->call("module/ocstore_badges/cron", array ("minute" => "*", "hour" => "*", "day" => "*", "dayofweek" => "*", "dayofmonth" => "*"));
+
+// end file
