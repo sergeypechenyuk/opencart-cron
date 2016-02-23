@@ -2,6 +2,7 @@
 /*
 	Author: Sergey Pechenyuk
 	WWW: http://oc-store.com
+	Github: https://github.com/sergeypechenyuk/opencart-cron
 	Email: sergey.pechenyuk@gmail.com
 */
 
