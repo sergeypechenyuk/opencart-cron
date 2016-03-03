@@ -3,7 +3,7 @@ Cron for Opencart 2.x
 
 Реализация крона в Opencart 2.x для запуска контроллеров в папке admin.
 
-Задания прописываются в файле admin/cron.php следующим образом
+Задания прописываются в файле admin/cron_tasks.php следующим образом
 ```
 $cron->call(
     "module/ocstore_badges/cron", 
