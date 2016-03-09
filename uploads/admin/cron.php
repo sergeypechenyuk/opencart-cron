@@ -7,6 +7,14 @@ if (is_file('config.php')) {
 	require_once('config.php');
 }
 
+// Cron Controller
+require_once(DIR_SYSTEM.'library/cron.php');
+$cron = new Cron;
+require_once(DIR_APPLICATION.'cron_tasks.php');
+
+if (!$cron->isRun())
+	exit;
+
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
 
@@ -148,9 +156,7 @@ foreach ($query->rows as $result) {
 // Front Controller
 $controller = new Front($registry);
 
-// Cron Controller
-$cron = new Cron($registry);
+$cron->run($registry);
 
-require_once('cron_tasks.php');
 
 // end file

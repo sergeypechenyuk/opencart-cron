@@ -9,8 +9,7 @@
 class Cron {
 	private $tasks = array();
 	
-	public function __construct($registry) {
-		$this->registry = $registry; 
+	public function __construct() {
 		$this->runCronDate = array (
 			"minute" 		=> date("i"),
 			"hour" 			=> date("h"), 
@@ -24,15 +23,25 @@ class Cron {
 		return $this->registry->get($name);
 	}
 	
+	public function isRun() {
+		return count($this->tasks)? true: false;
+	}
+	
+	public function run($registry) {
+		$this->registry = $registry; 
+		foreach ($this->tasks as $task)
+			$this->load->controller($task['controller'], $task['parameters']); 
+	}
+	
 	/**
 	* Call the controller at a specific time
 	*
 	* @param string $controller Name of conroller and method, for example: setting/store/index
 	* @param array $time Array of elements: minute, hour, day, dayofweek, dayofmonth. A value can be: * (any number); the number, range of numbers; eg 1-10. All values are separated by commas, for example "1,4,10-15,20". If you need to perform every script, for example, 5 minutes, then enter the value "* /5"
 	**/
-	public function call($controller, $time) {
+	public function call($controller, $time, $parameters = array()) {
 		if ($this->isTime($time)) {
-			$this->load->controller($controller);
+			$this->tasks[] = array("controller" => $controller, "parameters" => $parameters);
 		}
 	}
 	
