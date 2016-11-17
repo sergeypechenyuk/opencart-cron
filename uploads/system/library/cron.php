@@ -12,7 +12,7 @@ class Cron {
 	public function __construct() {
 		$this->runCronDate = array (
 			"minute" 		=> date("i"),
-			"hour" 			=> date("h"), 
+			"hour" 			=> date("H"), 
 			"day" 			=> date("d"), 
 			"dayofweek" 	=> date("N"), 
 			"dayofmonth" 	=> date("j")
